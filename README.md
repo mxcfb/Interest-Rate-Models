@@ -1,5 +1,7 @@
 # Interest Rate Models
 
+See [Interest Rate Models](Interest Rate Models.ipynb).
+
 ## Basics
 
 ### Spot Rates and Forward Rates
@@ -10,7 +12,7 @@ Simply-compounded spot rate $F(t,T)$
 
 $$
 \begin{aligned}
-& P(t,T) (1+F (t,T) \tau(t,T)) = 1 \\
+& P(t,T) \left( 1+F (t,T) \tau(t,T) \right) = 1 \\
 \iff & F(t,T) = \frac{1}{\tau(t,T)} \left( \frac{1}{P(t,T)}-1 \right).
 \end{aligned}
 $$
@@ -19,7 +21,7 @@ Simply-compounded forward rate $F(t;S,T)$
 
 $$
 \begin{aligned}
-& P(t,S,T) (1+F(t,S,T) \tau(S,T) = 1 \\
+& P(t,S,T) \left( 1+F(t,S,T) \tau(S,T) \right) = 1 \\
 \iff & F(t,S,T) = \frac{1}{\tau(t,T)} \left( \frac{P(t,S)}{P(t,T)}-1 \right).
 \end{aligned}
 $$
@@ -56,7 +58,7 @@ k-times-per-year compounded spot rate $Y^k(t,T)$
 $$
 \begin{aligned}
 & P(t,T)\left(1+\frac{Y^{k}(t,T)}{k}\right)^{k \tau(t,T)} = 1 \\
-\iff & Y^{k}(t,T) = \frac{k}{[P(t,T)]^{1 /(k \tau(t,T))}-k}.
+\iff & Y^{k}(t,T) = \frac{k}{[P(t,T)]^{1 /(k \tau(t,T))}}-k.
 \end{aligned}
 $$
 
@@ -66,7 +68,7 @@ Instantaneous spot rate (short rate) $r(t)$
 
 $$
 \begin{aligned}
-r(t) &=\lim_{\Delta t \rightarrow 0^{+}} F(t,t+\Delta t) =\lim_{\Delta t \rightarrow 0^{+}} R(t,t+\Delta t) =\lim_{\Delta t \rightarrow 0^{+}} Y(t,t+\Delta t) =\lim_{\Delta t \rightarrow 0^{+}} Y^{k}(t,t+\Delta t) \text { for each } k \\
+r(t) &=\lim_{\Delta t \rightarrow 0^{+}} F(t,t+\Delta t) =\lim_{\Delta t \rightarrow 0^{+}} R(t,t+\Delta t) = \dots \\
 &=-\left.\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T}\right|_{T=t} \\
 &=-\left.\frac{\partial P(t,T)}{\partial T}\right|_{T=t}.
 \end{aligned}
@@ -83,6 +85,24 @@ f(t,T) &=\lim_{\Delta t \rightarrow 0^{+}} F(t;T,T+\Delta t) =\lim_{\Delta t \ri
 $$
 
 $r(t) = f(t,t)$
+
 $P(t,T) = \exp \left( - \int_t^T f(t,s) \,ds \right)$
+
 $P(t,S,T) = \exp \left( - \int_S^T f(t,s) \,ds \right)$
+
 $F(t,S,T) = \frac{1}{\tau(S,T)} \left( \exp \left( \int_S^T f(t,s) \,ds \right)-1 \right)$
+
+#### Comments
+
+Suppose $t = 0$ is today.
+
+**LIBOR rates**: LIBOR (spot) rate $L(t,T)$; LIBOR forward rate $L(t,S,T)$; instantaneous $T-S$ LIBOR forward rate $l(t,s)$.
+The instantaneous LIBOR forward rate $l(t,s)$ is specific to the tenor $T-S$ of LIBOR as they carry different credits.
+
+**OIS rates**: discount factor $P(t,T) \rightarrow$ OIS (spot) rate $F(t,T)$; forward discount factor $P(t,S,T) \rightarrow$ OIS forward rate $F(t,S,T)$; instantaneous (overnight) OIS forward rate $f(t,s)$.
+
+LIBOR rates are not regarded risk free, but the participating banks have high credit ratings.
+
+Until 2008, it was common practice to use **LIBOR** as both the **discount rate**, i.e. the interest rate used for calculating the discount factors, as well as the **index rate**, i.e. the rate used as the forward rate.
+In the wake of the 2008 credit crunch, LIBOR’s credibility as a funding rate was put to question.
+Since **OIS** is a better indicator of the costs of funding, it is used for **discounting**, while **LIBOR** is the **index rate**.
