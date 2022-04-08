@@ -1,6 +1,6 @@
 # Interest Rate Models
 
-See [Interest Rate Models](Interest Rate Models.ipynb).
+See [Interest Rate Models](Interest%20Rate%20Models.ipynb).
 
 ## Basics
 
