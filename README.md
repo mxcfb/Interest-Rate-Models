@@ -104,5 +104,7 @@ The instantaneous LIBOR forward rate $l(t,s)$ is specific to the tenor $T-S$ of 
 LIBOR rates are not regarded risk free, but the participating banks have high credit ratings.
 
 Until 2008, it was common practice to use **LIBOR** as both the **discount rate**, i.e. the interest rate used for calculating the discount factors, as well as the **index rate**, i.e. the rate used as the forward rate.
-In the wake of the 2008 credit crunch, LIBOR’s credibility as a funding rate was put to question.
+
+In the wake of the 2008 credit crunch, LIBOR’s credibility as a funding rate was put to question. As a result, OIS rates became increasingly important as benchmark funding rates.
+
 Since **OIS** is a better indicator of the costs of funding, it is used for **discounting**, while **LIBOR** is the **index rate**.
