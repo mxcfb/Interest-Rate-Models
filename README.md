@@ -111,10 +111,15 @@ Since **OIS** is a better indicator of the costs of funding, it is used for **di
 
 #### Comments
 
-LIBOR rates (prior to December 31, 2021) was calculated (from the quotations provided by the participating banks determined by the ICE Benchmark Administration) for five currencies (USD, GBP, EUR, CHF and JPY) and for seven tenors in respect of each currency (Overnight/1 Day, 1 Week, 1 Month, 2 Months, 3 Months, 6 Months and 12 Months) on each London business day. [Website](https://www.theice.com/iba/libor)
+**LIBOR** rates (prior to December 31, 2021) were calculated (from the quotations provided by the participating banks determined by the ICE Benchmark Administration) for five currencies (USD, GBP, EUR, CHF and JPY) and for seven tenors in respect of each currency (Overnight/1 Day, 1 Week, 1 Month, 2 Months, 3 Months, 6 Months and 12 Months) on each London business day.
+[**LIBOR**](https://www.theice.com/iba/libor)
 
-LIBOR based instruments: Eurodollar futures (LIBOR futures, i.e. futures on the 3 Month LIBOR rate), forward rate agreements (FRAs), interest rate swaps (IRSs).
+LIBOR based instruments: [Eurodollar futures and options](https://www.cmegroup.com/trading/interest-rates/stir/eurodollar_contract_specifications.html) (LIBOR futures, i.e. futures on the 3 Month LIBOR rate), forward rate agreements (FRAs), interest rate swaps (IRSs).
 
-OIS rates - USD: (effective) federal funds rate, GBP: SONIA (sterling overnight index average), EUR: EONIA (euro
-overnight index average), CHF: SARON (Swiss average rate overnight).
+OIS rates - USD: **EFFR** (effective federal funds rate), GBP: **SONIA** (sterling overnight index average), EUR: **EONIA** (euro overnight index average) replaced by **€STR** (euro short-term rate), CHF: **SARON** (Swiss average rate overnight).
+[**EFFR** (Ticker: FEDL01/2/3 Index)](https://www.newyorkfed.org/markets/reference-rates/effr)
+[**SONIA** (Ticker: SONIO/N Index)](https://www.bankofengland.co.uk/-/media/boe/files/markets/benchmarks/sonia-key-features-and-policies)
+[**€STR** (Ticker: ESTRON Index)](https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html)
+[**SARON** (Ticker: SSARON Index)]()
 
+OIS based instruments: LIBOR/OIS basis swaps, [30-Day Federal Funds futures and options](https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund_contract_specifications.html).
