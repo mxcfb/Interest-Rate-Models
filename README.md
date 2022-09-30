@@ -108,3 +108,13 @@ Until 2008, it was common practice to use **LIBOR** as both the **discount rate*
 In the wake of the 2008 credit crunch, LIBOR’s credibility as a funding rate was put to question. As a result, OIS rates became increasingly important as benchmark funding rates.
 
 Since **OIS** is a better indicator of the costs of funding, it is used for **discounting**, while **LIBOR** is the **index rate**.
+
+#### Comments
+
+LIBOR rates (prior to December 31, 2021) was calculated (from the quotations provided by the participating banks determined by the ICE Benchmark Administration) for five currencies (USD, GBP, EUR, CHF and JPY) and for seven tenors in respect of each currency (Overnight/1 Day, 1 Week, 1 Month, 2 Months, 3 Months, 6 Months and 12 Months) on each London business day. [Website](https://www.theice.com/iba/libor)
+
+LIBOR based instruments: Eurodollar futures (LIBOR futures, i.e. futures on the 3 Month LIBOR rate), forward rate agreements (FRAs), interest rate swaps (IRSs).
+
+OIS rates - USD: (effective) federal funds rate, GBP: SONIA (sterling overnight index average), EUR: EONIA (euro
+overnight index average), CHF: SARON (Swiss average rate overnight).
+
