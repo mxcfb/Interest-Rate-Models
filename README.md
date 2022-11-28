@@ -6,7 +6,7 @@ See [Interest Rate Models](Interest%20Rate%20Models.ipynb).
 
 ### Spot Rates and Forward Rates
 
-Suppose that the zero coupon bond price observed at time t is $P(t,T) \in \mathcal{F}_{t}$. The forward zero coupon bond price observed at time t is $P(t,S,T) = \frac{P(t,T)}{P(t,S)} \in \mathcal{F}_{t}$.
+Suppose that the zero coupon bond price observed at time t is $$P(t,T) \in \mathcal{F}_{t}$$. The forward zero coupon bond price observed at time t is $$P(t,S,T) = \frac{P(t,T)}{P(t,S)} \in \mathcal{F}_{t}$$.
 
 Simply-compounded spot rate $F(t,T)$
 
@@ -22,7 +22,7 @@ Simply-compounded forward rate $F(t;S,T)$
 $$
 \begin{aligned}
 & P(t,S,T) \left( 1+F(t,S,T) \tau(S,T) \right) = 1 \\
-\iff & F(t,S,T) = \frac{1}{\tau(t,T)} \left( \frac{P(t,S)}{P(t,T)}-1 \right).
+\iff & F(t,S,T) = \frac{1}{\tau(S,T)} \left( \frac{P(t,S)}{P(t,T)}-1 \right).
 \end{aligned}
 $$
 
@@ -40,7 +40,7 @@ Continuously-compounded forward rate $R(t;S,T)$
 $$
 \begin{aligned}
 & P(t,S,T) e^{R(t,S,T) \tau(S,T)} = 1 \\
-\iff & R(t,S,T) = \frac{1}{\tau(t,T)} \left( \ln P(t,S) - \ln P(t,T) \right).
+\iff & R(t,S,T) = \frac{1}{\tau(S,T)} \left( \ln P(t,S) - \ln P(t,T) \right).
 \end{aligned}
 $$
 
@@ -114,7 +114,7 @@ Since **OIS** is a better indicator of the costs of funding, it is used for **di
 **LIBOR** rates (prior to December 31, 2021) were calculated (from the quotations provided by the participating banks determined by the ICE Benchmark Administration) for five currencies (USD, GBP, EUR, CHF and JPY) and for seven tenors in respect of each currency (Overnight/1 Day, 1 Week, 1 Month, 2 Months, 3 Months, 6 Months and 12 Months) on each London business day.
 [**LIBOR**](https://www.theice.com/iba/libor)
 
-LIBOR based instruments: [Eurodollar futures](https://www.cmegroup.com/trading/interest-rates/stir/eurodollar_contract_specifications.html) (LIBOR futures, i.e. futures on the 3 month LIBOR rate), forward rate agreements (FRAs), interest rate swaps (IRSs).
+LIBOR based instruments: [Eurodollar futures](https://www.cmegroup.com/trading/interest-rates/stir/eurodollar_contract_specifications.html) (LIBOR futures, i.e. futures on the 3-Month LIBOR rate), forward rate agreements (FRAs), interest rate swaps (IRSs).
 
 OIS rates - USD: **EFFR** (effective federal funds rate), GBP: **SONIA** (sterling overnight index average), EUR: **EONIA** (euro overnight index average) replaced by **€STR** (euro short-term rate), CHF: **SARON** (Swiss average rate overnight), JPY: **TONAR** (Tokyo overnight average rate).
 [**EFFR** (Ticker: FEDL01 Index)](https://www.newyorkfed.org/markets/reference-rates/effr)
@@ -124,3 +124,63 @@ OIS rates - USD: **EFFR** (effective federal funds rate), GBP: **SONIA** (sterli
 [**TONAR** (Ticker: MUTKCALM Index)](http://www3.boj.or.jp/market/en/menu_m.htm)
 
 OIS based instruments: LIBOR/OIS basis swaps, [30-Day Federal Funds futures](https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund_contract_specifications.html).
+
+
+
+## Pricing
+
+### Girsanov’s theorem  
+
+Consider a Brownian motion $W_t$ under $$\mathbb{P}$$, let
+$$
+D_t = exp\left(\int_0^t \theta_s^{\top} dW_s - \frac{1}{2}\theta_s^{\top}\theta_s ds\right) \quad \text{i.e.}\ \ dD_t = \theta_t^{\top} D_t dW_t
+$$
+and
+$$
+\frac{d \mathbb{Q}}{d \mathbb{P}} \big|_t = D_t.
+$$
+Then $$\widetilde{W}_t = W_t - \int_0^t \theta_s ds \quad \text{i.e.}\ \ d \widetilde{W}_t = dW_t - \theta_t dt$$ is a Brownian motion under $$\mathbb{Q}$$ (assume that Novikov’s condition holds).
+
+#### Example 1
+
+Black-Scholes Model under Risk Neutral Measure $$\mathbb{Q}$$ (Money market account $B$ as numeraire).
+
+Under B-S Model,
+$$
+dS = \mu S dt + \sigma S dW
+$$
+Let
+$$
+d D = -\lambda D dW, \quad \frac{d \mathbb{Q}}{d \mathbb{P}} = D.
+$$
+Then $$d \widetilde{W} = dW + \lambda dt$$ is a Brownian motion under $$\mathbb{Q}$$. Since $$S^B = \frac{S}{B} = e^{-rt} S$$ is a martingale under $$\mathbb{Q}$$,
+$$
+dS^B = (\mu-r)S^B dt + \sigma S^B dW = (\mu-r-\sigma \lambda)S^B dt + \sigma S^B d \widetilde{W}
+$$
+$$\implies \lambda = \frac{\mu-r}{\sigma}$$ and
+$$
+dS = (\mu-\sigma \lambda) S dt + \sigma S d \widetilde{W} =  rS dt + \sigma S d \widetilde{W}.
+$$
+
+#### Example 2
+
+Black-Scholes Model under Stock Measure $$\mathbb{Q}$$ (Stock $S$ as numeraire).
+
+Since $$B^S = \frac{B}{S} = e^{rt} S^{-1}$$ is a martingale under $$\mathbb{Q}$$,
+$$
+dB^S = (r-\mu+\sigma^2)B^S dt - \sigma B^S dW = (r-\mu+\sigma^2+\sigma \lambda)B^S dt - \sigma B^S d \widetilde{W}
+$$
+$$\implies \lambda = \frac{\mu-r-\sigma^2}{\sigma}$$ and
+$$
+dS = (\mu-\sigma \lambda) S dt + \sigma S d \widetilde{W} =  (r+\sigma^2)S dt + \sigma S d \widetilde{W}.
+$$
+
+### Swaps
+
+### Caps and Floors
+
+T-forward measure
+
+### Swaptions
+
+Swap measure
