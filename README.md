@@ -6,7 +6,7 @@ See [Interest Rate Models](Interest%20Rate%20Models.ipynb).
 
 ### Spot Rates and Forward Rates
 
-Suppose that the zero coupon bond price observed at time t is $$P(t,T) \in \mathcal{F}_{t}$$. The forward zero coupon bond price observed at time t is $$P(t,S,T) = \frac{P(t,T)}{P(t,S)} \in \mathcal{F}_{t}$$.
+Suppose that the zero coupon bond price observed at time t is $P(t,T) \in \mathcal{F}\_{t}$. The forward zero coupon bond price observed at time t is $P(t,S,T) = \frac{P(t,T)}{P(t,S)} \in \mathcal{F}_{t}$.
 
 Simply-compounded spot rate $F(t,T)$
 
@@ -131,46 +131,60 @@ OIS based instruments: LIBOR/OIS basis swaps, [30-Day Federal Funds futures](htt
 
 ### Girsanov’s theorem  
 
-Consider a Brownian motion $W_t$ under $$\mathbb{P}$$, let
+Consider a Brownian motion $W_t$ under $\mathbb{P}$, let
+
 $$
 D_t = exp\left(\int_0^t \theta_s^{\top} dW_s - \frac{1}{2}\theta_s^{\top}\theta_s ds\right) \quad \text{i.e.}\ \ dD_t = \theta_t^{\top} D_t dW_t
 $$
+
 and
+
 $$
 \frac{d \mathbb{Q}}{d \mathbb{P}} \big|_t = D_t.
 $$
-Then $$\widetilde{W}_t = W_t - \int_0^t \theta_s ds \quad \text{i.e.}\ \ d \widetilde{W}_t = dW_t - \theta_t dt$$ is a Brownian motion under $$\mathbb{Q}$$ (assume that Novikov’s condition holds).
+
+Then $\widetilde{W}_t = W_t - \int_0^t \theta_s ds \quad \text{i.e.}\ \ d \widetilde{W}_t = dW_t - \theta_t dt$ is a Brownian motion under $\mathbb{Q}$ (assume that Novikov’s condition holds).
 
 #### Example 1
 
-Black-Scholes Model under Risk Neutral Measure $$\mathbb{Q}$$ (Money market account $B$ as numeraire).
+Black-Scholes Model under Risk Neutral Measure $\mathbb{Q}$ (Money market account $B$ as numeraire).
 
 Under B-S Model,
+
 $$
 dS = \mu S dt + \sigma S dW
 $$
+
 Let
+
 $$
 d D = -\lambda D dW, \quad \frac{d \mathbb{Q}}{d \mathbb{P}} = D.
 $$
-Then $$d \widetilde{W} = dW + \lambda dt$$ is a Brownian motion under $$\mathbb{Q}$$. Since $$S^B = \frac{S}{B} = e^{-rt} S$$ is a martingale under $$\mathbb{Q}$$,
+
+Then $d \widetilde{W} = dW + \lambda dt$ is a Brownian motion under $\mathbb{Q}$. Since $S^B = \frac{S}{B} = e^{-rt} S$ is a martingale under $\mathbb{Q}$,
+
 $$
 dS^B = (\mu-r)S^B dt + \sigma S^B dW = (\mu-r-\sigma \lambda)S^B dt + \sigma S^B d \widetilde{W}
 $$
-$$\implies \lambda = \frac{\mu-r}{\sigma}$$ and
+
+$\implies \lambda = \frac{\mu-r}{\sigma}$ and
+
 $$
 dS = (\mu-\sigma \lambda) S dt + \sigma S d \widetilde{W} =  rS dt + \sigma S d \widetilde{W}.
 $$
 
 #### Example 2
 
-Black-Scholes Model under Stock Measure $$\mathbb{Q}$$ (Stock $S$ as numeraire).
+Black-Scholes Model under Stock Measure $\mathbb{Q}$ (Stock $S$ as numeraire).
 
-Since $$B^S = \frac{B}{S} = e^{rt} S^{-1}$$ is a martingale under $$\mathbb{Q}$$,
+Since $B^S = \frac{B}{S} = e^{rt} S^{-1}$ is a martingale under $\mathbb{Q}$,
+
 $$
 dB^S = (r-\mu+\sigma^2)B^S dt - \sigma B^S dW = (r-\mu+\sigma^2+\sigma \lambda)B^S dt - \sigma B^S d \widetilde{W}
 $$
-$$\implies \lambda = \frac{\mu-r-\sigma^2}{\sigma}$$ and
+
+$\implies \lambda = \frac{\mu-r-\sigma^2}{\sigma}$ and
+
 $$
 dS = (\mu-\sigma \lambda) S dt + \sigma S d \widetilde{W} =  (r+\sigma^2)S dt + \sigma S d \widetilde{W}.
 $$
