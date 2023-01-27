@@ -147,7 +147,7 @@ Then $\widetilde{W}_t = W_t - \int_0^t \theta_s ds \quad \text{i.e.}\ \ d \widet
 
 #### Example 1
 
-Black-Scholes Model under Risk Neutral Measure $\mathbb{Q}$ (Money market account $B$ as numeraire).
+Black-Scholes Model under Risk Neutral Measure $\mathbb{Q}$ (Money market account: $B$ as numeraire).
 
 Under B-S Model,
 
@@ -175,7 +175,7 @@ $$
 
 #### Example 2
 
-Black-Scholes Model under Stock Measure $\mathbb{Q}$ (Stock $S$ as numeraire).
+Black-Scholes Model under Stock Measure $\mathbb{Q}$ (Stock: $S$ as numeraire).
 
 Since $B^S = \frac{B}{S} = e^{rt} S^{-1}$ is a martingale under $\mathbb{Q}$,
 
@@ -193,8 +193,18 @@ $$
 
 ### Caps and Floors
 
-T-forward measure
+T-forward measure $\mathbb{Q}_T$ (Zero coupon bond which matures at $T$: $P(t,T) = P(t,t,T)$ as numeraire).
+
+Key: OIS forward rate $F(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\mathbb{Q}_T$, (assume that LIBOR/OIS spread is deterministic), LIBOR forward rate $L(t,S,T)$ is a martingale under $\mathbb{Q}_T$.
 
 ### Swaptions
 
-Swap measure
+Swap measure $\mathbb{Q}_{T_0,T}$ (Annuity function/DVO1 of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,T_0,T)$ as numeraire).
+
+Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$ is a martingale under $\mathbb{Q}_{T_0,T}$.
+
+### Convexity Adjustment
+
+$$
+\mathbb{E}^{\mathbb{Q}_S}(L(S,S,T))-L(0,S,T)
+$$
