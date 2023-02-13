@@ -129,7 +129,7 @@ OIS based instruments: LIBOR/OIS basis swaps, [30-Day Federal Funds futures](htt
 
 ## Pricing
 
-### Girsanov’s theorem  
+### Girsanov’s theorem
 
 Consider a Brownian motion $W_t$ under $\mathbb{P}$, let
 
@@ -195,7 +195,7 @@ $$
 
 T-forward measure $\mathbb{Q}_T$ (Zero coupon bond which matures at $T$: $P(t,T) = P(t,t,T)$ as numeraire).
 
-Key: OIS forward rate $F(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\mathbb{Q}_T$, (assume that LIBOR/OIS spread is deterministic), LIBOR forward rate $L(t,S,T)$ is a martingale under $\mathbb{Q}_T$.
+Key: OIS forward rate $F(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\mathbb{Q}_T$, (assume that LIBOR/OIS spread is deterministic), LIBOR forward rate $L(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\mathbb{Q}_T$.
 
 ### Swaptions
 
@@ -207,4 +207,22 @@ Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$
 
 $$
 \mathbb{E}^{\mathbb{Q}_S}(L(S,S,T))-L(0,S,T)
+$$
+
+Under $\mathbb{Q}_S$, $P(t,S) = P(t,t,S)$ as numeraire, PV is
+
+$$
+\frac{P}{P(0,S)} = \mathbb{E}^{\mathbb{Q}_S} \left(\frac{L(S,T)}{P(S,S)}\right)
+$$
+
+Under $\mathbb{Q}_T$, $P(t,T) = P(t,t,T)$ as numeraire, PV is
+
+$$
+\frac{P}{P(0,T)} = \mathbb{E}^{\mathbb{Q}_T} \left(\frac{L(S,T)}{P(S,T)}\right)
+$$
+
+Thus (or applying Girsanov’s theorem),
+
+$$
+\mathbb{E}^{\mathbb{Q}_S}(L(S,S,T)) = \mathbb{E}^{\mathbb{Q}_T} \left(L(S,S,T) \frac{P(0,S,T)}{P(S,S,T)}\right).
 $$
