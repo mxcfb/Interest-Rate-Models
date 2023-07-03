@@ -69,8 +69,8 @@ Instantaneous spot rate (short rate) $r(t)$
 $$
 \begin{aligned}
 r(t) &=\lim_{\Delta t \rightarrow 0^{+}} F(t,t+\Delta t) =\lim_{\Delta t \rightarrow 0^{+}} R(t,t+\Delta t) = \dots \\
-&=-\left.\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T}\right|_{T=t} \\
-&=-\left.\frac{\partial P(t,T)}{\partial T}\right|_{T=t}.
+&=-\left.\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T}\right|\_{T=t} \\
+&=-\left.\frac{\partial P(t,T)}{\partial T}\right|\_{T=t}.
 \end{aligned}
 $$
 
@@ -116,14 +116,16 @@ Since **OIS** is a better indicator of the costs of funding, it is used for **di
 
 LIBOR based instruments: [Eurodollar futures](https://www.cmegroup.com/trading/interest-rates/stir/eurodollar_contract_specifications.html) (LIBOR futures, i.e. futures on the 3-Month LIBOR rate), forward rate agreements (FRAs), interest rate swaps (IRSs).
 
-OIS rates - USD: **EFFR** (effective federal funds rate), GBP: **SONIA** (sterling overnight index average), EUR: **EONIA** (euro overnight index average) replaced by **€STR** (euro short-term rate), CHF: **SARON** (Swiss average rate overnight), JPY: **TONAR** (Tokyo overnight average rate).
-[**EFFR** (Ticker: FEDL01 Index)](https://www.newyorkfed.org/markets/reference-rates/effr)
+OIS rates - USD: **EFFR** (effective federal funds rate), GBP: **SONIA** (sterling overnight index average), EUR: **EONIA** (euro overnight index average) replaced by **ESTR** (euro short-term rate), CHF: **SARON** (Swiss average rate overnight), JPY: **TONAR** (Tokyo overnight average rate).
+[**EFFR** (Ticker: FDFD Index)](https://www.newyorkfed.org/markets/reference-rates/effr)
 [**SONIA** (Ticker: SONIO/N Index)](https://www.bankofengland.co.uk/-/media/boe/files/markets/benchmarks/sonia-key-features-and-policies)
-[**€STR** (Ticker: ESTRON Index)](https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html)
+[**ESTR** (Ticker: ESTRON Index)](https://www.ecb.europa.eu/stats/financial_markets_and_interest_rates/euro_short-term_rate/html/index.en.html)
 [**SARON** (Ticker: SRFXON3 Index)]()
-[**TONAR** (Ticker: MUTKCALM Index)](http://www3.boj.or.jp/market/en/menu_m.htm)
+[**TONAR** (Ticker: DYENCALM Index)](http://www3.boj.or.jp/market/en/menu_m.htm)
 
 OIS based instruments: LIBOR/OIS basis swaps, [30-Day Federal Funds futures](https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund_contract_specifications.html).
+
+#### [LIBOR Fallback](https://data.bloomberglp.com/professional/sites/10/IBOR-Fallbacks-Fact-Sheet.pdf)
 
 
 
@@ -199,7 +201,7 @@ Key: OIS forward rate $F(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\ma
 
 ### Swaptions
 
-Swap measure $\mathbb{Q}_{T_0,T}$ (Annuity function/DVO1 of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,T_0,T)$ as numeraire).
+Swap measure $\mathbb{Q}_{T_0,T}$ (Annuity function/DV01 of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,T_0,T)$ as numeraire).
 
 Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$ is a martingale under $\mathbb{Q}_{T_0,T}$.
 
