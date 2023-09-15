@@ -86,11 +86,11 @@ $$
 
 $r(t) = f(t,t)$
 
-$P(t,T) = \exp \left( - \int_t^T f(t,s) \,ds \right)$
+$P(t,T) = \exp \left( - \int_t^T f(t,s) ds \right)$
 
-$P(t,S,T) = \exp \left( - \int_S^T f(t,s) \,ds \right)$
+$P(t,S,T) = \exp \left( - \int_S^T f(t,s) ds \right)$
 
-$F(t,S,T) = \frac{1}{\tau(S,T)} \left( \exp \left( \int_S^T f(t,s) \,ds \right)-1 \right)$
+$F(t,S,T) = \frac{1}{\tau(S,T)} \left( \exp \left( \int_S^T f(t,s) ds \right)-1 \right)$
 
 #### Comments
 
@@ -149,7 +149,7 @@ Then $\widetilde{W}_t = W_t - \int_0^t \theta_s ds \quad \text{i.e.}\ \ d \widet
 
 #### Example 1
 
-Black-Scholes Model under Risk Neutral Measure $\mathbb{Q}$ (Money market account: $B$ as numeraire).
+Black-Scholes Model under Risk Neutral Measure $\mathbb{Q}$ (Money market account: $B(t) = e^{\int_0^t r(s) ds}$ as numeraire).
 
 Under B-S Model,
 
@@ -199,6 +199,8 @@ T-forward measure $\mathbb{Q}_T$ (Zero coupon bond which matures at $T$: $P(t,T)
 
 Key: OIS forward rate $F(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\mathbb{Q}_T$, (assume that LIBOR/OIS spread is deterministic), LIBOR forward rate $L(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\mathbb{Q}_T$.
 
+[T-forward measure](https://www.frouah.com/finance%20notes/The%20T-Forward%20Measure.pdf)
+
 ### Swaptions
 
 Swap measure $\mathbb{Q}_{T_0,T}$ (Annuity function/DV01 of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,T_0,T)$ as numeraire).
@@ -231,4 +233,10 @@ Thus (or applying Girsanov’s theorem),
 
 $$
 \mathbb{E}^{\mathbb{Q}_S}(L(S,S,T)) = \mathbb{E}^{\mathbb{Q}_T} \left(L(S,S,T) \frac{P(0,S,T)}{P(S,S,T)}\right).
+$$
+
+The future convexity adjustment is defined as
+
+$$
+\mathbb{E}^{\mathbb{Q}}(L(S,S,T))-L(0,S,T)
 $$
