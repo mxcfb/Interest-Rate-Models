@@ -147,6 +147,13 @@ $$
 
 Then $\widetilde{W}_t = W_t - \int_0^t \theta_s ds \quad \text{i.e.}\ \ d \widetilde{W}_t = dW_t - \theta_t dt$ is a Brownian motion under $\mathbb{Q}$ (assume that Novikov’s condition holds).
 
+### Change of Numeraire
+
+$$
+\frac{d \mathbb{Q}}{d \mathbb{P}} \big|_t = \cfrac{\cfrac{\mathcal{N}^Q(t)} {\mathcal{N}^P(t)}} {\cfrac{\mathcal{N}^Q(0)} {\mathcal{N}^P(0)}}.
+$$
+
+
 #### Example 1
 
 Black-Scholes Model under Risk Neutral Measure $\mathbb{Q}$ (Money market account: $B(t) = e^{\int_0^t r(s) ds}$ as numeraire).
@@ -239,4 +246,10 @@ The future convexity adjustment is defined as
 
 $$
 \mathbb{E}^{\mathbb{Q}}(L(S,S,T))-L(0,S,T)
+$$
+
+Under $\mathbb{Q}$, $B(t) = e^{\int_0^t r(s) ds}$ as numeraire,
+
+$$
+P(t,S,T) = \mathbb{E}^{\mathbb{Q}} \left( e^{ - \int_S^T r(s) ds} \big| \mathcal{F}\_{t} \right)
 $$
