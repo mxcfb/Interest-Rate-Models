@@ -131,6 +131,8 @@ OIS based instruments: LIBOR/OIS basis swaps, [30-Day Federal Funds futures](htt
 
 ## Pricing
 
+Suppose $0 \le s \le t \le T$.
+
 ### Girsanov’s theorem
 
 Consider a Brownian motion $W_t$ under $\mathbb{P}$, let
@@ -139,20 +141,33 @@ $$
 D_t = exp\left(\int_0^t \theta_s^{\top} dW_s - \frac{1}{2}\theta_s^{\top}\theta_s ds\right) \quad \text{i.e.}\ \ dD_t = \theta_t^{\top} D_t dW_t
 $$
 
-and
+and the Radon-Nikodym derivative
 
 $$
-\frac{d \mathbb{Q}}{d \mathbb{P}} \big|_t = D_t.
+\frac{d \mathbb{Q}}{d \mathbb{P}} = D_T.
 $$
 
 Then $\widetilde{W}_t = W_t - \int_0^t \theta_s ds \quad \text{i.e.}\ \ d \widetilde{W}_t = dW_t - \theta_t dt$ is a Brownian motion under $\mathbb{Q}$ (assume that Novikov’s condition holds).
 
 ### Change of Numeraire
 
+See Shreve StoCal II 5.2. Define the the Radon-Nikodym derivative process
+
 $$
-\frac{d \mathbb{Q}}{d \mathbb{P}} \big|_t = \cfrac{\cfrac{\mathcal{N}^Q(t)} {\mathcal{N}^P(t)}} {\cfrac{\mathcal{N}^Q(0)} {\mathcal{N}^P(0)}}.
+\frac{d \mathbb{Q}}{d \mathbb{P}}(t) = \mathbb{E}(D_T \big| \mathcal{F}\_{t}) = D_t.
 $$
 
+$$
+\frac{d \mathbb{Q}}{d \mathbb{P}} (t) = \cfrac{\cfrac{\mathcal{N}^Q(t)} {\mathcal{N}^P(t)}} {\cfrac{\mathcal{N}^Q(0)} {\mathcal{N}^P(0)}}.
+$$
+
+#### Lemma
+
+Let $X$ be a $\mathcal{F}\_{t}$-measurable random variable. Then
+
+$$
+\mathbb{E^Q}(X \big| \mathcal{F}\_{s}) = \frac{1}{D(s)} \mathbb{E}(X D(t)\big| \mathcal{F}\_{s})
+$$
 
 #### Example 1
 
@@ -251,5 +266,5 @@ $$
 Under $\mathbb{Q}$, $B(t) = e^{\int_0^t r(s) ds}$ as numeraire,
 
 $$
-P(t,S,T) = \mathbb{E}^{\mathbb{Q}} \left( e^{ - \int_S^T r(s) ds} \big| \mathcal{F}\_{t} \right)
+P(t,T) = \mathbb{E}^{\mathbb{Q}} \left( e^{ - \int_t^T r(s) ds} \big| \mathcal{F}\_{t} \right)
 $$
