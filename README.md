@@ -166,7 +166,7 @@ $$
 Let $X$ be a $\mathcal{F}\_{t}$-measurable random variable. Then
 
 $$
-\mathbb{E^Q}(X \big| \mathcal{F}\_{s}) = \frac{1}{D(s)} \mathbb{E}(X D(t)\big| \mathcal{F}\_{s})
+\mathbb{E^Q}(X \big| \mathcal{F}\_{s}) = \frac{1}{D_s} \mathbb{E}(X D_t \big| \mathcal{F}\_{s}) = \mathbb{E}(X D_t \big| \mathcal{F}\_{s}) = \cfrac{1} {\cfrac{\mathcal{N}^Q(s)} {\mathcal{N}^P(s)}} \mathbb{E}(X \cfrac{\mathcal{N}^Q(t)} {\mathcal{N}^P(t)} \big| \mathcal{F}\_{s}).
 $$
 
 #### Example 1
