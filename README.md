@@ -131,7 +131,7 @@ OIS based instruments: LIBOR/OIS basis swaps, [30-Day Federal Funds futures](htt
 
 ## Pricing
 
-Suppose $0 \le s \le t \le T$.
+Suppose $0 \le s \le t \le S \le T$.
 
 ### Girsanov’s theorem
 
@@ -166,7 +166,7 @@ $$
 Let $X$ be a $\mathcal{F}\_{t}$-measurable random variable. Then
 
 $$
-\mathbb{E^Q}(X \big| \mathcal{F}\_{s}) = \frac{1}{D_s} \mathbb{E}(X D_t \big| \mathcal{F}\_{s}) = \mathbb{E}(X D_t \big| \mathcal{F}\_{s}) = \cfrac{1} {\cfrac{\mathcal{N}^Q(s)} {\mathcal{N}^P(s)}} \mathbb{E}(X \cfrac{\mathcal{N}^Q(t)} {\mathcal{N}^P(t)} \big| \mathcal{F}\_{s}).
+\mathbb{E^Q}(X \big| \mathcal{F}\_{s}) = \frac{1}{D_s} \mathbb{E}(X D_t \big| \mathcal{F}\_{s}) = \cfrac{1} {\cfrac{\mathcal{N}^Q(s)} {\mathcal{N}^P(s)}} \mathbb{E}(X \cfrac{\mathcal{N}^Q(t)} {\mathcal{N}^P(t)} \big| \mathcal{F}\_{s}).
 $$
 
 #### Example 1
@@ -213,6 +213,14 @@ $$
 dS = (\mu-\sigma \lambda) S dt + \sigma S d \widetilde{W} =  (r+\sigma^2)S dt + \sigma S d \widetilde{W}.
 $$
 
+### FRAs
+
+FRAs PV at payment date $S$ is
+
+$$
+\frac{N \tau(S,T) \left(L(S,S,T)-FRA \right)}{1 + \tau(S,T)L(S,S,T)}
+$$
+
 ### Swaps
 
 ### Caps and Floors
@@ -234,6 +242,8 @@ Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$
 ### Interest Rate Futures Options & Mid-Curve Interest Rate Futures Options
 
 ### Convexity Adjustment
+
+The convexity adjustmenmt for LIBOR-in-arrears swaps is
 
 $$
 \mathbb{E}^{\mathbb{Q}_S}(L(S,S,T))-L(0,S,T)
@@ -257,7 +267,7 @@ $$
 \mathbb{E}^{\mathbb{Q}_S}(L(S,S,T)) = \mathbb{E}^{\mathbb{Q}_T} \left(L(S,S,T) \frac{P(0,S,T)}{P(S,S,T)}\right).
 $$
 
-The future convexity adjustment is defined as
+The convexity adjustment for futures is
 
 $$
 \mathbb{E}^{\mathbb{Q}}(L(S,S,T))-L(0,S,T)
@@ -267,4 +277,20 @@ Under $\mathbb{Q}$, $B(t) = e^{\int_0^t r(s) ds}$ as numeraire,
 
 $$
 P(t,T) = \mathbb{E}^{\mathbb{Q}} \left( e^{ - \int_t^T r(s) ds} \big| \mathcal{F}\_{t} \right)
+$$
+
+$f(t,T)$ is a martingale under $\mathbb{Q}_T$:
+
+$$
+\begin{aligned}
+f(t,T) &=-\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T} \\
+&=\frac{1}{P(t,T)} \mathbb{E}^{\mathbb{Q}} \left( r(T) e^{ - \int_t^T r(s) ds} \big| \mathcal{F}\_{t} \right) \\
+&=\mathbb{E}^{\mathbb{Q}_T} \left( r(T) \big| \mathcal{F}\_{t} \right).
+\end{aligned}
+$$
+
+Normal Model:
+
+$$
+df(t,T) = \sigma_{t,T} dW_t^T
 $$
