@@ -158,7 +158,7 @@ $$
 $$
 
 $$
-\frac{d \mathbb{Q}}{d \mathbb{P}} (t) = \cfrac{\cfrac{\mathcal{N}^Q(t)} {\mathcal{N}^P(t)}} {\cfrac{\mathcal{N}^Q(0)} {\mathcal{N}^P(0)}}.
+\frac{d \mathbb{Q}}{d \mathbb{P}}(t) = \cfrac{\cfrac{\mathcal{N}^Q(t)} {\mathcal{N}^P(t)}} {\cfrac{\mathcal{N}^Q(0)} {\mathcal{N}^P(0)}}.
 $$
 
 #### Lemma
@@ -182,7 +182,7 @@ $$
 Let
 
 $$
-d D = -\lambda D dW, \quad \frac{d \mathbb{Q}}{d \mathbb{P}} = D.
+dD = -\lambda D dW, \quad \frac{d \mathbb{Q}}{d \mathbb{P}} = D.
 $$
 
 Then $d \widetilde{W} = dW + \lambda dt$ is a Brownian motion under $\mathbb{Q}$. Since $S^B = \frac{S}{B} = e^{-rt} S$ is a martingale under $\mathbb{Q}$,
@@ -261,7 +261,7 @@ $$
 \frac{P}{P(0,T)} = \mathbb{E}^{\mathbb{Q}_T} \left(\frac{L(S,T)}{P(S,T)}\right)
 $$
 
-Thus (or applying Girsanov’s theorem),
+Thus (or applying change of numeraire),
 
 $$
 \mathbb{E}^{\mathbb{Q}_S}(L(S,S,T)) = \mathbb{E}^{\mathbb{Q}_T} \left(L(S,S,T) \frac{P(0,S,T)}{P(S,S,T)}\right).
@@ -289,8 +289,53 @@ f(t,T) &=-\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T} \\
 \end{aligned}
 $$
 
-Normal Model:
+#### Model under $\mathbb{Q}$:
+[Relationships between interest rate dynamics](https://galton.uchicago.edu/~arbitrage/391win03/set2.pdf)
 
 $$
-df(t,T) = \sigma_{t,T} dW_t^T
+df(t,T) = \alpha_{t,T} dt + \sigma_{t,T} dW_t
+$$
+
+Applying Girsanov’s theorem,
+
+$$
+D_t = \frac{d \mathbb{Q}_T}{d \mathbb{Q}}(t) = \frac{P(t,T) e^{ - \int_0^t r(s) ds}} {P(0,T)}
+$$
+
+$d W_t^T = dW_t -  \frac{dD(t)}{D(t)} dW_t$ is a Brownian motion under $\mathbb{Q}_T$ and
+
+$$
+\begin{aligned}
+d \ln{P(t,T)} &= d (- \int_t^T f(t,s) ds) \\
+&= r(t) dt - \int_t^T df(t,s) ds \\
+&= r(t) dt - \left(\int_t^T \alpha_{t,s} ds \right) dt - \left(\int_t^T \sigma_{t,s} ds \right) dW_t \\
+&= \left(r(t) - \Alpha_{t,T} \right) dt - \Sigma_{t,T} dW_t \\
+
+\frac{dP(t,T)}{P(t,T)} &= \left(r(t) - \Alpha_{t,T} + \frac{1}{2} \Sigma_{t,T}^2 \right)dt - \Sigma_{t,T} dW_t \\
+\\
+\frac{dD(t)}{D(t)} &= -r(t) dt + \frac{dP(t,T)}{P(t,T)} \\
+&= \left(-\Alpha_{t,T} + \frac{1}{2} \Sigma_{t,T}^2 \right)dt - \Sigma_{t,T} dW_t
+\end{aligned}
+$$
+
+so $d W_t^T = dW_t + \Sigma_{t,T} dt$ is a Brownian motion under $\mathbb{Q}_T$. Since $df(t,T) = (\alpha_{t,T} - \sigma_{t,T}\Sigma_{t,T})  dt + \sigma_{t,T} dW_t^T$ is a martingale under $\mathbb{Q}_T$, $\alpha_{t,T} = \sigma_{t,T}\Sigma_{t,T}, \Alpha_{t,T} = \frac{1}{2} \Sigma_{t,T}^2$.
+
+Under $\mathbb{Q}_T$,
+
+$$
+\begin{aligned}
+df(t,T) &= \sigma_{t,T} dW_t^T \\
+d \ln{P(t,T)} &= \left(r(t) + \frac{1}{2} \Sigma_{t,T}^2 \right) dt - \Sigma_{t,T} dW_t^T \\
+\frac{dP(t,T)}{P(t,T)} &= \left(r(t) + \Sigma_{t,T}^2 \right) dt - \Sigma_{t,T} dW_t^T.
+\end{aligned}
+$$
+
+Under $\mathbb{Q}$,
+
+$$
+\begin{aligned}
+df(t,T) &= \sigma_{t,T}\Sigma_{t,T} dt + \sigma_{t,T} dW_t \\
+d \ln{P(t,T)} &= \left(r(t) - \frac{1}{2} \Sigma_{t,T}^2 \right) dt - \Sigma_{t,T} dW_t \\
+\frac{dP(t,T)}{P(t,T)} &= r(t) dt - \Sigma_{t,T} dW_t.
+\end{aligned}
 $$
