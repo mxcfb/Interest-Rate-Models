@@ -309,16 +309,16 @@ $$
 d \ln{P(t,T)} &= d (- \int_t^T f(t,s) ds) \\
 &= r(t) dt - \int_t^T df(t,s) ds \\
 &= r(t) dt - \left(\int_t^T \alpha_{t,s} ds \right) dt - \left(\int_t^T \sigma_{t,s} ds \right) dW_t \\
-&= \left(r(t) - \Alpha_{t,T} \right) dt - \Sigma_{t,T} dW_t \\
-
-\frac{dP(t,T)}{P(t,T)} &= \left(r(t) - \Alpha_{t,T} + \frac{1}{2} \Sigma_{t,T}^2 \right)dt - \Sigma_{t,T} dW_t \\
+&= \left(r(t) - A_{t,T} \right) dt - \Sigma_{t,T} dW_t \\
+\
+\frac{dP(t,T)}{P(t,T)} &= \left(r(t) - A_{t,T} + \frac{1}{2} \Sigma_{t,T}^2 \right)dt - \Sigma_{t,T} dW_t \\
 \\
 \frac{dD(t)}{D(t)} &= -r(t) dt + \frac{dP(t,T)}{P(t,T)} \\
-&= \left(-\Alpha_{t,T} + \frac{1}{2} \Sigma_{t,T}^2 \right)dt - \Sigma_{t,T} dW_t
+&= \left(-A_{t,T} + \frac{1}{2} \Sigma_{t,T}^2 \right)dt - \Sigma_{t,T} dW_t
 \end{aligned}
 $$
 
-so $d W_t^T = dW_t + \Sigma_{t,T} dt$ is a Brownian motion under $\mathbb{Q}_T$. Since $df(t,T) = (\alpha_{t,T} - \sigma_{t,T}\Sigma_{t,T})  dt + \sigma_{t,T} dW_t^T$ is a martingale under $\mathbb{Q}_T$, $\alpha_{t,T} = \sigma_{t,T}\Sigma_{t,T}, \Alpha_{t,T} = \frac{1}{2} \Sigma_{t,T}^2$.
+so $d W_t^T = dW_t + \Sigma_{t,T} dt$ is a Brownian motion under $\mathbb{Q}\_T$. Since $df(t,T) = (\alpha_{t,T} - \sigma_{t,T}\Sigma_{t,T})  dt + \sigma_{t,T} dW_t^T$ is a martingale under $\mathbb{Q}\_T$, $\alpha_{t,T} = \sigma_{t,T}\Sigma_{t,T}, A_{t,T} = \frac{1}{2} \Sigma_{t,T}^2$.
 
 Under $\mathbb{Q}_T$,
 
