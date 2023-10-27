@@ -12,7 +12,7 @@ Simply-compounded spot rate $F(t,T)$
 
 $$
 \begin{aligned}
-& P(t,T) \left( 1+F (t,T) \tau(t,T) \right) = 1 \\
+& P(t,T) \left( 1+F(t,T) \tau(t,T) \right) = 1 \\
 \iff & F(t,T) = \frac{1}{\tau(t,T)} \left( \frac{1}{P(t,T)}-1 \right).
 \end{aligned}
 $$
@@ -218,7 +218,7 @@ $$
 FRAs PV at payment date $S$ is
 
 $$
-\frac{N \tau(S,T) \left(L(S,S,T)-FRA \right)}{1 + \tau(S,T)L(S,S,T)}
+\frac{N \tau(S,T) \left( FRA - L(S,S,T) \right)}{1 + \tau(S,T)L(S,S,T)}
 $$
 
 ### Swaps
@@ -233,7 +233,7 @@ Key: OIS forward rate $F(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\ma
 
 ### Swaptions
 
-Swap measure $\mathbb{Q}_{T_0,T}$ (Annuity function/DV01 of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,T_0,T)$ as numeraire).
+Swap measure $\mathbb{Q}_{T_0,T}$ (Spot annuity function/DV01 of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,t,T_0,T)$ as numeraire).
 
 Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$ is a martingale under $\mathbb{Q}_{T_0,T}$.
 
@@ -243,7 +243,7 @@ Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$
 
 ### Convexity Adjustment
 
-The convexity adjustmenmt for LIBOR-in-arrears swaps is
+The convexity adjustmenmt for **LIBOR-in-arrears swaps** is
 
 $$
 \mathbb{E}^{\mathbb{Q}_S}(L(S,S,T))-L(0,S,T)
@@ -267,7 +267,9 @@ $$
 \mathbb{E}^{\mathbb{Q}_S}(L(S,S,T)) = \mathbb{E}^{\mathbb{Q}_T} \left(L(S,S,T) \frac{P(0,S,T)}{P(S,S,T)}\right).
 $$
 
-The convexity adjustment for futures is
+&nbsp;
+
+The convexity adjustment for **futures** is
 
 $$
 \mathbb{E}^{\mathbb{Q}}(L(S,S,T))-L(0,S,T)
@@ -289,7 +291,8 @@ f(t,T) &=-\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T} \\
 \end{aligned}
 $$
 
-#### Model under $\mathbb{Q}$:
+**Model under $\mathbb{Q}$:**
+
 [Relationships between interest rate dynamics](https://galton.uchicago.edu/~arbitrage/391win03/set2.pdf)
 
 $$
