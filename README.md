@@ -131,7 +131,7 @@ OIS based instruments: LIBOR/OIS basis swaps, [30-Day Federal Funds futures](htt
 
 ## Pricing
 
-Suppose $0 \le s \le t \le S \le T$.
+Suppose $0 \le t \le S \le T$.
 
 ### Girsanov’s theorem
 
@@ -213,12 +213,16 @@ $$
 dS = (\mu-\sigma \lambda) S dt + \sigma S d \widetilde{W} =  (r+\sigma^2)S dt + \sigma S d \widetilde{W}.
 $$
 
+&nbsp;
+
+Suppose that **Funding rate** is $F(t,T)$, with discount factor $P(t,T)$. **Float rate** is LIBOR rate $L(t,T)$.
+
 ### FRAs
 
 FRAs PV at payment date $S$ is
 
 $$
-\frac{N \tau(S,T) \left( FRA - L(S,S,T) \right)}{1 + \tau(S,T)L(S,S,T)}
+\frac{N \tau(S,T) \left( L(S,S,T) - FRA \right)}{1 + \tau(S,T)L(S,S,T)}
 $$
 
 ### Swaps
@@ -233,7 +237,9 @@ Key: OIS forward rate $F(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\ma
 
 ### Swaptions
 
-Swap measure $\mathbb{Q}_{T_0,T}$ (Spot annuity function/DV01 of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,t,T_0,T)$ as numeraire).
+Swap measure $\mathbb{Q}_{T_0,T}$ (Spot annuity function/Spot PV01 of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,t,T_0,T)$ as numeraire).
+
+Forward annuity/Forward PV01 at forward date $S$ is $A(t,S,T_0,T) = A(t,t,T_0,T) / P(t,S,T)$.
 
 Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$ is a martingale under $\mathbb{Q}_{T_0,T}$.
 
@@ -243,7 +249,7 @@ Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$
 
 ### Convexity Adjustment
 
-The convexity adjustmenmt for **LIBOR-in-arrears swaps** is
+The convexity adjustment for **LIBOR-in-arrears swaps** is
 
 $$
 \mathbb{E}^{\mathbb{Q}_S}(L(S,S,T))-L(0,S,T)
