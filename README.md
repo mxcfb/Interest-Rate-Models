@@ -222,8 +222,24 @@ Suppose that **Funding rate** is $F(t,T)$, with discount factor $P(t,T)$. **Floa
 FRAs PV at payment date $S$ is
 
 $$
-\frac{N \tau(S,T) \left( L(S,S,T) - FRA \right)}{1 + \tau(S,T)L(S,S,T)}
+\frac{N \tau(S,T) \left( FRA - L(S,S,T) \right)}{1 + \tau(S,T)L(S,S,T)}
 $$
+
+Forward rate at time $t$ is $K = L(t,S,T)$.
+
+### Futures
+
+Futures price at settlement date $S$ is
+
+$$
+100(1-L(S,S,T))
+$$
+
+Futures price at time $t$ is less than $100(1-L(t,S,T))$. Futures pays (futures price at time $t$ - futures price at settlement date $S$) to the exchange over the period $[t,S]$. The corresponding FRA at time $t$ pays $100(L(t,S,T) - L(S,S,T))$ at $T$ (in reality FRA payment/settlement date is $S$).
+
+Futures are similar to FRAs: If futures price at time $t$ is $100(1-L(t,S,T))$, then both contracts make the exact same payment. If LIBOR rises over the period $[t,S]$, FRA would be the better contract to have entered (better to pay later); if LIBOR drops, futures would be the better (better to receive earlier).
+
+The exact relationship between futures price and FRA depends on the discount curve over the period $[t,S]$: When LIBOR goes up the discount curve steepens, the purchaser of the future pays money to the exchange, which leads to an increased advantage to the FRA under which the payment is later. When LIBOR goes down the discount curve flattens, the purchaser receives money from the exchange, which reduces the disadvantage to the FRA under which the payment is received later.
 
 ### Swaps
 
