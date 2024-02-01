@@ -225,7 +225,9 @@ $$
 \frac{N \tau(S,T) \left( FRA - L(S,S,T) \right)}{1 + \tau(S,T)L(S,S,T)}
 $$
 
-Forward rate at time $t$ is $K = L(t,S,T)$.
+$\mathbb{E}^{\mathbb{Q}_S} \left(\frac{FRA - L(S,S,T)}{1 + \tau(S,T)L(S,S,T)} \right) = 0 \implies$
+
+FRA at time $t$ is $\text{FRA}(t,T) = L(t,S,T) = \mathbb{E}^{\mathbb{Q}_T} [L(S,S,T)]$.
 
 ### Futures
 
@@ -234,6 +236,8 @@ Futures price at settlement date $S$ is
 $$
 100(1-L(S,S,T))
 $$
+
+Futures price at time $t$ is $\text{Futures}(t,T) = \mathbb{E}^{\mathbb{Q}} [100(1-L(S,S,T))]$.
 
 Futures price at time $t$ is less than $100(1-L(t,S,T))$. Futures pays (futures price at time $t$ - futures price at settlement date $S$) to the exchange over the period $[t,S]$. The corresponding FRA at time $t$ pays $100(L(t,S,T) - L(S,S,T))$ at $T$ (in reality FRA payment/settlement date is $S$).
 
