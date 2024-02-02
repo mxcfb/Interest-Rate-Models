@@ -259,7 +259,13 @@ Key: OIS forward rate $F(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\ma
 
 Swap measure $\mathbb{Q}_{T_0,T}$ (Spot annuity function/Spot PV01 of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,t,T_0,T)$ as numeraire).
 
-Forward annuity/Forward PV01 at forward date $S$ is $A(t,S,T_0,T) = A(t,t,T_0,T) / P(t,S,T)$.
+Forward annuity/Forward PV01 at forward date $S$ is $A(t,S,T_0,T) = \sum\limits_{T_j \in [T_0, T]} \tau(T_{j-1},T_j) P(t,S,T_j) = \sum\limits_{T_j \in [T_0, T]} \tau(T_{j-1},T_j) P(t,T_j) / P(t,S) = A(t,t,T_0,T) / P(t,S)$.
+
+Forward premium (%, in percentage of notional) at option expiry date $S$ is $A(t,S,T_0,T) * BreakEven(t)$.
+
+Spot premium (%) at spot date $t$ is $A(t,t,T_0,T) * BreakEven(t)$.
+
+$BreakEven(t) =\mathbb{E}^{\mathbb{Q}_{T_0,T}} [(K - S(S,T_0,T))^+ | \mathcal{F_t}]$ under BlackNormalModel or BlackLogNormalModel.
 
 Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$ is a martingale under $\mathbb{Q}_{T_0,T}$.
 
