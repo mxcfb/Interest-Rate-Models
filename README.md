@@ -227,7 +227,7 @@ $$
 
 $\mathbb{E}^{\mathbb{Q}_ S} \left(\frac{FRA - L(S,S,T)}{1 + \tau(S,T)L(S,S,T)} \right) = 0 \implies$
 
-FRA at time $t$ is $\text{FRA}(t,T) = L(t,S,T) = \mathbb{E}^{\mathbb{Q}_ T} [L(S,S,T)]$.
+FRA at time $t$ is $\text{FRA}(t,T) = L(t,S,T) = \mathbb{E}^{\mathbb{Q}_ T} [L(S,S,T) \big| \mathcal{F}_ {t}]$.
 
 ### Futures
 
@@ -237,13 +237,27 @@ $$
 100(1-L(S,S,T))
 $$
 
-Futures price at time $t$ is $\text{Futures}(t,T) = \mathbb{E}^{\mathbb{Q}} [100(1-L(S,S,T))]$.
+Futures price at time $t$ is $\text{Fut}(t,T) = \mathbb{E}^{\mathbb{Q}} [100(1-L(S,S,T)) \big| \mathcal{F}_ {t}]$.
 
-Futures price at time $t$ is less than $100(1-L(t,S,T))$. Futures pays (futures price at time $t$ - futures price at settlement date $S$) to the exchange over the period $[t,S]$. The corresponding FRA at time $t$ pays $100(L(t,S,T) - L(S,S,T))$ at $T$ (in reality FRA payment/settlement date is $S$).
+$\text{Fut}(t,T)$ is less than $100(1-L(t,S,T))$. Futures pays $\text{Fut}(t,T) - \text{Fut}(S,T)$ to the exchange over the period $[t,S]$. The corresponding FRA traded at time $t$ pays $100(L(t,S,T) - L(S,S,T))$ at $T$ (in reality FRA payment/settlement date is $S$).
 
 Futures are similar to FRAs: If futures price at time $t$ is $100(1-L(t,S,T))$, then both contracts make the exact same payment. If LIBOR rises over the period $[t,S]$, FRA would be the better contract to have entered (better to pay later); if LIBOR drops, futures would be the better (better to receive earlier).
 
 The exact relationship between futures price and FRA depends on the discount curve over the period $[t,S]$: When LIBOR goes up the discount curve steepens, the purchaser of the future pays money to the exchange, which leads to an increased advantage to the FRA under which the payment is later. When LIBOR goes down the discount curve flattens, the purchaser receives money from the exchange, which reduces the disadvantage to the FRA under which the payment is received later.
+
+### Bond Futures
+
+Implied repo rate for a bond in the delivery basket of the bond futures contract is the rate of return that can be earned by simultaneously selling a bond futures contract and buying the underlying bond for delivery within the delivery window (from first delivery date to last delivery date).
+
+For bonds in the delivery basket of the bond futures contract:
+
+- (Futures Implied) Forward Bond Price = Futures Price * Conversion Factor.
+- Gross Basis = Bond Clean Price - Futures Implied Forward Bond Price
+- Net Basis = Repo Curve Implied Forward Bond Price - Futures Implied Forward Bond Price
+
+Cheapest to Deliver:
+- Bond with highest implied repo rate (depends on delivery date)
+- Bond with lowest gross basis / net basis
 
 ### Swaps
 
