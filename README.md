@@ -6,7 +6,7 @@ See [Interest Rate Models](Interest%20Rate%20Models.ipynb).
 
 ### Spot Rates and Forward Rates
 
-Suppose that the zero coupon bond price observed at time t is $P(t,T) \in \mathcal{F}\_{t}$. The forward zero coupon bond price observed at time t is $P(t,S,T) = \frac{P(t,T)}{P(t,S)} \in \mathcal{F}_{t}$.
+Suppose that the zero coupon bond price observed at time t is $P(t,T) \in \mathcal{F}_ {t}$. The forward zero coupon bond price observed at time t is $P(t,S,T) = \frac{P(t,T)}{P(t,S)} \in \mathcal{F}_ {t}$.
 
 Simply-compounded spot rate $F(t,T)$
 
@@ -69,8 +69,8 @@ Instantaneous spot rate (short rate) $r(t)$
 $$
 \begin{aligned}
 r(t) &=\lim_{\Delta t \rightarrow 0^{+}} F(t,t+\Delta t) =\lim_{\Delta t \rightarrow 0^{+}} R(t,t+\Delta t) = \dots \\
-&=-\left.\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T}\right|\_{T=t} \\
-&=-\left.\frac{\partial P(t,T)}{\partial T}\right|\_{T=t}.
+&=-\left.\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T}\right|_ {T=t} \\
+&=-\left.\frac{\partial P(t,T)}{\partial T}\right|_ {T=t}.
 \end{aligned}
 $$
 
@@ -125,7 +125,7 @@ OIS rates - USD: **EFFR** (effective federal funds rate), GBP: **SONIA** (sterli
 
 OIS based instruments: LIBOR/OIS basis swaps, [30-Day Federal Funds futures](https://www.cmegroup.com/trading/interest-rates/stir/30-day-federal-fund_contract_specifications.html).
 
-#### [LIBOR Fallback](https://data.bloomberglp.com/professional/sites/10/IBOR-Fallbacks-Fact-Sheet.pdf)
+#### [LIBOR Fallback](IBOR-Fallbacks-Fact-Sheet.pdf)
 
 
 
@@ -147,14 +147,14 @@ $$
 \frac{d \mathbb{Q}}{d \mathbb{P}} = D_T.
 $$
 
-Then $\widetilde{W}_t = W_t - \int_0^t \theta_s ds \quad \text{i.e.}\ \ d \widetilde{W}_t = dW_t - \theta_t dt$ is a Brownian motion under $\mathbb{Q}$ (assume that Novikov’s condition holds).
+Then $\widetilde{W}_ t = W_t - \int_0^t \theta_s ds \quad \text{i.e.}\ \ d \widetilde{W}_ t = dW_t - \theta_t dt$ is a Brownian motion under $\mathbb{Q}$ (assume that Novikov’s condition holds).
 
 ### Change of Numeraire
 
 See Shreve StoCal II 5.2. Define the the Radon-Nikodym derivative process
 
 $$
-\frac{d \mathbb{Q}}{d \mathbb{P}}(t) = \mathbb{E}(D_T \big| \mathcal{F}\_{t}) = D_t.
+\frac{d \mathbb{Q}}{d \mathbb{P}}(t) = \mathbb{E}(D_T \big| \mathcal{F}_ {t}) = D_t.
 $$
 
 $$
@@ -163,10 +163,10 @@ $$
 
 #### Lemma
 
-Let $X$ be a $\mathcal{F}\_{t}$-measurable random variable. Then
+Let $X$ be a $\mathcal{F}_ {t}$-measurable random variable. Then
 
 $$
-\mathbb{E^Q}(X \big| \mathcal{F}\_{s}) = \frac{1}{D_s} \mathbb{E}(X D_t \big| \mathcal{F}\_{s}) = \cfrac{1} {\cfrac{\mathcal{N}^Q(s)} {\mathcal{N}^P(s)}} \mathbb{E}(X \cfrac{\mathcal{N}^Q(t)} {\mathcal{N}^P(t)} \big| \mathcal{F}\_{s}).
+\mathbb{E^Q}(X \big| \mathcal{F}_ {s}) = \frac{1}{D_s} \mathbb{E}(X D_t \big| \mathcal{F}_ {s}) = \cfrac{1} {\cfrac{\mathcal{N}^Q(s)} {\mathcal{N}^P(s)}} \mathbb{E}(X \cfrac{\mathcal{N}^Q(t)} {\mathcal{N}^P(t)} \big| \mathcal{F}_ {s}).
 $$
 
 #### Example 1
@@ -225,9 +225,9 @@ $$
 \frac{N \tau(S,T) \left( FRA - L(S,S,T) \right)}{1 + \tau(S,T)L(S,S,T)}
 $$
 
-$\mathbb{E}^{\mathbb{Q}_S} \left(\frac{FRA - L(S,S,T)}{1 + \tau(S,T)L(S,S,T)} \right) = 0 \implies$
+$\mathbb{E}^{\mathbb{Q}_ S} \left(\frac{FRA - L(S,S,T)}{1 + \tau(S,T)L(S,S,T)} \right) = 0 \implies$
 
-FRA at time $t$ is $\text{FRA}(t,T) = L(t,S,T) = \mathbb{E}^{\mathbb{Q}_T} [L(S,S,T)]$.
+FRA at time $t$ is $\text{FRA}(t,T) = L(t,S,T) = \mathbb{E}^{\mathbb{Q}_ T} [L(S,S,T)]$.
 
 ### Futures
 
@@ -249,25 +249,25 @@ The exact relationship between futures price and FRA depends on the discount cur
 
 ### Caps and Floors
 
-T-forward measure $\mathbb{Q}_T$ (Zero coupon bond which matures at $T$: $P(t,T) = P(t,t,T)$ as numeraire).
+T-forward measure $\mathbb{Q}_ T$ (Zero coupon bond which matures at $T$: $P(t,T) = P(t,t,T)$ as numeraire).
 
-Key: OIS forward rate $F(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\mathbb{Q}_T$, (assume that LIBOR/OIS spread is deterministic), LIBOR forward rate $L(t,S,T) \in \mathcal{F}\_{t}$ is a martingale under $\mathbb{Q}_T$.
+Key: OIS forward rate $F(t,S,T) \in \mathcal{F}_ {t}$ is a martingale under $\mathbb{Q}_ T$, (assume that LIBOR/OIS spread is deterministic), LIBOR forward rate $L(t,S,T) \in \mathcal{F}_ {t}$ is a martingale under $\mathbb{Q}_ T$.
 
-[T-forward measure](https://www.frouah.com/finance%20notes/The%20T-Forward%20Measure.pdf)
+[T-forward measure](The%20T-Forward%20Measure.pdf)
 
 ### Swaptions
 
-Swap measure $\mathbb{Q}_{T_0,T}$ (Spot annuity function/Spot PV01 of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,t,T_0,T)$ as numeraire).
+Swap measure $\mathbb{Q}_ {T_0,T}$ (**Spot annuity function/Spot PV01/(Fixed Leg) Spot Ann01** of a forward starting swap which settles at $T_0$ and matures at $T$: $A(t,t,T_0,T)$ as numeraire).
 
-Forward annuity/Forward PV01 at forward date $S$ is $A(t,S,T_0,T) = \sum\limits_{T_j \in [T_0, T]} \tau(T_{j-1},T_j) P(t,S,T_j) = \sum\limits_{T_j \in [T_0, T]} \tau(T_{j-1},T_j) P(t,T_j) / P(t,S) = A(t,t,T_0,T) / P(t,S)$.
+**Forward annuity/Forward PV01/(Fixed Leg) Forward Ann01** at forward date $S$ is $A(t,S,T_0,T) = \sum\limits_{T_j \in [T_0, T]} \tau(T_{j-1},T_j) P(t,S,T_j) = \sum\limits_{T_j \in [T_0, T]} \tau(T_{j-1},T_j) P(t,T_j) / P(t,S) = A(t,t,T_0,T) / P(t,S)$.
 
 Forward premium (%, in percentage of notional) at option expiry date $S$ is $A(t,S,T_0,T) * BreakEven(t)$.
 
 Spot premium (%) at spot date $t$ is $A(t,t,T_0,T) * BreakEven(t)$.
 
-$BreakEven(t) =\mathbb{E}^{\mathbb{Q}_{T_0,T}} [(K - S(S,T_0,T))^+ | \mathcal{F_t}]$ under BlackNormalModel or BlackLogNormalModel.
+$BreakEven(t) =\mathbb{E}^{\mathbb{Q}_ {T_0,T}} [(K - S(S,T_0,T))^+ | \mathcal{F_t}]$ under BlackNormalModel or BlackLogNormalModel.
 
-Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$ is a martingale under $\mathbb{Q}_{T_0,T}$.
+Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$ is a martingale under $\mathbb{Q}_ {T_0,T}$.
 
 ### Mid-Curve Swaptions
 
@@ -278,25 +278,25 @@ Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$
 The convexity adjustment for **LIBOR-in-arrears swaps** is
 
 $$
-\mathbb{E}^{\mathbb{Q}_S}(L(S,S,T))-L(0,S,T)
+\mathbb{E}^{\mathbb{Q}_ S}(L(S,S,T))-L(0,S,T)
 $$
 
-Under $\mathbb{Q}_S$, $P(t,S) = P(t,t,S)$ as numeraire, PV is
+Under $\mathbb{Q}_ S$, $P(t,S) = P(t,t,S)$ as numeraire, PV is
 
 $$
-\frac{P}{P(0,S)} = \mathbb{E}^{\mathbb{Q}_S} \left(\frac{L(S,T)}{P(S,S)}\right)
+\frac{P}{P(0,S)} = \mathbb{E}^{\mathbb{Q}_ S} \left(\frac{L(S,T)}{P(S,S)}\right)
 $$
 
-Under $\mathbb{Q}_T$, $P(t,T) = P(t,t,T)$ as numeraire, PV is
+Under $\mathbb{Q}_ T$, $P(t,T) = P(t,t,T)$ as numeraire, PV is
 
 $$
-\frac{P}{P(0,T)} = \mathbb{E}^{\mathbb{Q}_T} \left(\frac{L(S,T)}{P(S,T)}\right)
+\frac{P}{P(0,T)} = \mathbb{E}^{\mathbb{Q}_ T} \left(\frac{L(S,T)}{P(S,T)}\right)
 $$
 
 Thus (or applying change of numeraire),
 
 $$
-\mathbb{E}^{\mathbb{Q}_S}(L(S,S,T)) = \mathbb{E}^{\mathbb{Q}_T} \left(L(S,S,T) \frac{P(0,S,T)}{P(S,S,T)}\right).
+\mathbb{E}^{\mathbb{Q}_ S}(L(S,S,T)) = \mathbb{E}^{\mathbb{Q}_ T} \left(L(S,S,T) \frac{P(0,S,T)}{P(S,S,T)}\right).
 $$
 
 &nbsp;
@@ -310,22 +310,22 @@ $$
 Under $\mathbb{Q}$, $B(t) = e^{\int_0^t r(s) ds}$ as numeraire,
 
 $$
-P(t,T) = \mathbb{E}^{\mathbb{Q}} \left( e^{ - \int_t^T r(s) ds} \big| \mathcal{F}\_{t} \right)
+P(t,T) = \mathbb{E}^{\mathbb{Q}} \left( e^{ - \int_t^T r(s) ds} \big| \mathcal{F}_ {t} \right)
 $$
 
-$f(t,T)$ is a martingale under $\mathbb{Q}_T$:
+$f(t,T)$ is a martingale under $\mathbb{Q}_ T$:
 
 $$
 \begin{aligned}
 f(t,T) &=-\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T} \\
-&=\frac{1}{P(t,T)} \mathbb{E}^{\mathbb{Q}} \left( r(T) e^{ - \int_t^T r(s) ds} \big| \mathcal{F}\_{t} \right) \\
-&=\mathbb{E}^{\mathbb{Q}_T} \left( r(T) \big| \mathcal{F}\_{t} \right).
+&=\frac{1}{P(t,T)} \mathbb{E}^{\mathbb{Q}} \left( r(T) e^{ - \int_t^T r(s) ds} \big| \mathcal{F}_ {t} \right) \\
+&=\mathbb{E}^{\mathbb{Q}_ T} \left( r(T) \big| \mathcal{F}_ {t} \right).
 \end{aligned}
 $$
 
 **Model under $\mathbb{Q}$:**
 
-[Relationships between interest rate dynamics](https://galton.uchicago.edu/~arbitrage/391win03/set2.pdf)
+[Relationships between interest rate dynamics](Interest%20Rate%20Dynamics.pdf)
 
 $$
 df(t,T) = \alpha_{t,T} dt + \sigma_{t,T} dW_t
@@ -334,10 +334,10 @@ $$
 Applying Girsanov’s theorem,
 
 $$
-D_t = \frac{d \mathbb{Q}_T}{d \mathbb{Q}}(t) = \frac{P(t,T) e^{ - \int_0^t r(s) ds}} {P(0,T)}
+D_t = \frac{d \mathbb{Q}_ T}{d \mathbb{Q}}(t) = \frac{P(t,T) e^{ - \int_0^t r(s) ds}} {P(0,T)}
 $$
 
-$d W_t^T = dW_t -  \frac{dD(t)}{D(t)} dW_t$ is a Brownian motion under $\mathbb{Q}_T$ and
+$d W_t^T = dW_t -  \frac{dD(t)}{D(t)} dW_t$ is a Brownian motion under $\mathbb{Q}_ T$ and
 
 $$
 \begin{aligned}
@@ -353,9 +353,9 @@ d \ln{P(t,T)} &= d (- \int_t^T f(t,s) ds) \\
 \end{aligned}
 $$
 
-so $d W_t^T = dW_t + \Sigma_{t,T} dt$ is a Brownian motion under $\mathbb{Q}\_T$. Since $df(t,T) = (\alpha_{t,T} - \sigma_{t,T}\Sigma_{t,T})  dt + \sigma_{t,T} dW_t^T$ is a martingale under $\mathbb{Q}\_T$, $\alpha_{t,T} = \sigma_{t,T}\Sigma_{t,T}, A_{t,T} = \frac{1}{2} \Sigma_{t,T}^2$.
+so $d W_t^T = dW_t + \Sigma_{t,T} dt$ is a Brownian motion under $\mathbb{Q}_ T$. Since $df(t,T) = (\alpha_{t,T} - \sigma_{t,T}\Sigma_{t,T})  dt + \sigma_{t,T} dW_t^T$ is a martingale under $\mathbb{Q}_ T$, $\alpha_{t,T} = \sigma_{t,T}\Sigma_{t,T}, A_{t,T} = \frac{1}{2} \Sigma_{t,T}^2$.
 
-Under $\mathbb{Q}_T$,
+Under $\mathbb{Q}_ T$,
 
 $$
 \begin{aligned}
