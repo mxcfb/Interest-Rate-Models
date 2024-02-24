@@ -239,25 +239,35 @@ $$
 
 Futures price at time $t$ is $\text{Fut}(t,T) = \mathbb{E}^{\mathbb{Q}} [100(1-L(S,S,T)) \big| \mathcal{F}_ {t}]$.
 
-$\text{Fut}(t,T)$ is less than $100(1-L(t,S,T))$. Futures pays $\text{Fut}(t,T) - \text{Fut}(S,T)$ to the exchange over the period $[t,S]$. The corresponding FRA traded at time $t$ pays $100(L(t,S,T) - L(S,S,T))$ at $T$ (in reality FRA payment/settlement date is $S$).
+$\text{Fut}(t,T) \le 100(1-L(t,S,T))$. Futures pays $\text{Fut}(t,T) - \text{Fut}(S,T)$ to the exchange over the period $[t,S]$. The corresponding FRA traded at time $t$ pays $100(L(t,S,T) - L(S,S,T))$ at $T$ (in reality FRA payment/settlement date is $S$).
 
-Futures are similar to FRAs: If futures price at time $t$ is $100(1-L(t,S,T))$, then both contracts make the exact same payment. If LIBOR rises over the period $[t,S]$, FRA would be the better contract to have entered (better to pay later); if LIBOR drops, futures would be the better (better to receive earlier).
+Futures are similar to FRAs: If $\text{Fut}(t,T) = 100(1-L(t,S,T))$, then both contracts make the exact same payment. If LIBOR rises over the period $[t,S]$, FRA would be the better contract to have entered (better to pay later); if LIBOR drops, futures would be the better (better to receive earlier).
 
 The exact relationship between futures price and FRA depends on the discount curve over the period $[t,S]$: When LIBOR goes up the discount curve steepens, the purchaser of the future pays money to the exchange, which leads to an increased advantage to the FRA under which the payment is later. When LIBOR goes down the discount curve flattens, the purchaser receives money from the exchange, which reduces the disadvantage to the FRA under which the payment is received later.
 
 ### Bond Futures
 
-Implied repo rate for a bond in the delivery basket of the bond futures contract is the rate of return that can be earned by simultaneously selling a bond futures contract and buying the underlying bond for delivery within the delivery window (from first delivery date to last delivery date).
+**Implied repo rate** for a bond in the delivery basket of the bond futures contract is the rate of return that can be earned by simultaneously selling a bond futures contract and buying the underlying bond for delivery within the delivery window (from first delivery date to last delivery date).
 
 For bonds in the delivery basket of the bond futures contract:
 
-- (Futures Implied) Forward Bond Price = Futures Price * Conversion Factor.
-- Gross Basis = Bond Clean Price - Futures Implied Forward Bond Price
-- Net Basis = Repo Curve Implied Forward Bond Price - Futures Implied Forward Bond Price
+- **Futures Implied Forward Bond (Clean) Price** = Futures Price * Conversion Factor
+- **Gross Basis** = Bond Clean Price - Futures Implied Forward Bond (Clean) Price
+- Note: Bond Dirty Price = Bond Clean Price + Accrued Interest(*Settlement Date*)
+- **Net Basis** = Repo Curve Implied Forward Bond (Clean) Price - Futures Implied Forward Bond (Clean) Price
+- Note: Repo Curve Implied Forward Bond (Clean) Price = Bond Dirty Price / Repo Curve Discount Factor(*Settlement Date, Delivery Date*) - Coupon / Repo Curve Discount Factor(*Coupon Payment Date, Delivery Date*) - Accrued Interest(*Delivery Date*) (doesn't depend on futures price)
+- Note: Futures Price and Bond Clean Price are market (BBG) quotes. 
 
-Cheapest to Deliver:
+#### Cheapest to Deliver
+
 - Bond with highest implied repo rate (depends on delivery date)
 - Bond with lowest gross basis / net basis
+
+#### Bond Futures Basis
+
+- **Solve Equation**: Funding Curve + ZSpread + Bond Futures Basis $\Rightarrow$ Bond PV for CashFlows from Delivery Date == Futures Implied Bond PV
+- Note: Futures Implied Bond PV = Futures Implied Forward Bond Dirty Price * Repo Curve Discount Factor(*Settlement Date, Delivery Date*)
+- Note: Futures Implied Forward Bond Dirty Price = Futures Implied Forward Bond (Clean) Price + Accrued Interest(*Delivery Date*)
 
 ### Swaps
 
@@ -279,7 +289,7 @@ Forward premium (%, in percentage of notional) at option expiry date $S$ is $A(t
 
 Spot premium (%) at spot date $t$ is $A(t,t,T_0,T) * BreakEven(t)$.
 
-$BreakEven(t) =\mathbb{E}^{\mathbb{Q}_ {T_0,T}} [(K - S(S,T_0,T))^+ | \mathcal{F_t}]$ under BlackNormalModel or BlackLogNormalModel.
+$BreakEven(t) =\mathbb{E}^{\mathbb{Q}_ {T_0,T}} [(K - S(S,T_0,T))^+ \big| \mathcal{F_t}]$ under BlackNormalModel or BlackLogNormalModel.
 
 Key: Forward swap rate (break-even or mid-market forward swap rate) $S(t,T_0,T)$ is a martingale under $\mathbb{Q}_ {T_0,T}$.
 
@@ -337,7 +347,7 @@ f(t,T) &=-\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T} \\
 \end{aligned}
 $$
 
-**Model under $\mathbb{Q}$:**
+#### Model under $\mathbb{Q}$:
 
 [Relationships between interest rate dynamics](Interest%20Rate%20Dynamics.pdf)
 
