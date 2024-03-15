@@ -243,7 +243,13 @@ $\text{Fut}(t,T) \le 100(1-L(t,S,T))$. Futures pays $\text{Fut}(t,T) - \text{Fut
 
 Futures are similar to FRAs: If $\text{Fut}(t,T) = 100(1-L(t,S,T))$, then both contracts make the exact same payment. If LIBOR rises over the period $[t,S]$, FRA would be the better contract to have entered (better to pay later); if LIBOR drops, futures would be the better (better to receive earlier).
 
-The exact relationship between futures price and FRA depends on the discount curve over the period $[t,S]$: When LIBOR goes up the discount curve steepens, the purchaser of the future pays money to the exchange, which leads to an increased advantage to the FRA under which the payment is later. When LIBOR goes down the discount curve flattens, the purchaser receives money from the exchange, which reduces the disadvantage to the FRA under which the payment is received later.
+Generally, consider FRAs with standrd Credit Support Annex (CSA), under which (cash) collateral is required.
+- If LIBOR rises over the period $[t,S]$, FRA would be the better contract to have entered (the purchaser of the FRA will receive OIS interest on the collateral from the counterparty);
+- If LIBOR drops, futures would be the better (the purchaser of the FRA will pay OIS interest on the cash collateral to the counterparty).
+
+The exact relationship between futures price and FRA depends on the discount curve over the period $[t,S]$:
+- When LIBOR goes up the discount curve steepens, the purchaser of the future pays money to the exchange = the purchaser of the FRA pays cash collateral to the counterparty, but the purchaser of the FRA will receive more interest on the collateral from the counterparty, which leads to an increased advantage to the FRA;
+- When LIBOR goes down the discount curve flattens, the purchaser of the future receives money from the exchange = the purchaser of the FRA receives cash collateral from the counterparty, but the purchaser of the FRA will pay less interest on the collateral to the counterparty, which reduces the disadvantage to the FRA.
 
 ### Bond Futures
 
