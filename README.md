@@ -241,7 +241,7 @@ Futures price at time $t$ is $\text{Fut}(t,T) = \mathbb{E}^{\mathbb{Q}} [100(1-L
 
 $\text{Fut}(t,T) \le 100(1-L(t,S,T))$. Futures pays $\text{Fut}(t,T) - \text{Fut}(S,T)$ to the exchange over the period $[t,S]$. The corresponding FRA traded at time $t$ pays $100(L(t,S,T) - L(S,S,T))$ at $T$ (in reality FRA payment/settlement date is $S$).
 
-Futures are similar to FRAs: If $\text{Fut}(t,T) = 100(1-L(t,S,T))$, then both contracts make the exact same payment. If LIBOR rises over the period $[t,S]$, FRA would be the better contract to have entered (better to pay later); if LIBOR drops, futures would be the better (better to receive earlier). However, if LIBOR rises, the purchaser of the future will pay higher interest to fund the money paid to the exchange; if LIBOR drops, the purchaser of the future will receive lower interest on the money received from the exchange.
+Futures are similar to FRAs: If $\text{Fut}(t,T) = 100(1-L(t,S,T))$, then both contracts make the exact same payment. If LIBOR rises over the period $[t,S]$, FRA would be the better contract to have entered (better to pay later); if LIBOR drops, futures would be the better (better to receive earlier). However, if LIBOR rises, the purchaser of the future will finance the losses paid to the exchange at a higher rate; if LIBOR drops, the purchaser of the future will reinvest the profits received from the exchange at a lower rate.
 
 Standard Credit Support Annexes (CSAs):
 - Type of collateral: cash.
@@ -256,8 +256,8 @@ Standard Credit Support Annexes (CSAs):
 - If LIBOR drops, futures would be the better (the purchaser of the FRA needs to pay back OIS interest on the collateral to the counterparty).
 
 The exact relationship between futures price and FRA depends on the discount curve over the period $[t,S]$:
-- When LIBOR goes up the discount curve steepens, the purchaser of the future pays money to the exchange = the purchaser of the FRA pays cash collateral to the counterparty; but the purchaser of the FRA will receive more interest on the collateral from the counterparty, while the purchaser of the future will pay more interest to fund the money paid, which leads to an increased advantage to the FRA;
-- When LIBOR goes down the discount curve flattens, the purchaser of the future receives money from the exchange = the purchaser of the FRA receives cash collateral from the counterparty; but the purchaser of the FRA will pay less interest on the collateral to the counterparty, while the purchaser of the future will receive less interest on the money received, which reduces the disadvantage to the FRA.
+- When LIBOR goes up the discount curve steepens, the purchaser of the future pays money to the exchange = the purchaser of the FRA pays cash collateral to the counterparty; but the purchaser of the FRA will receive more interest on the collateral from the counterparty, while the purchaser of the future will pay more interest to finance the losses, which leads to an increased advantage to the FRA;
+- When LIBOR goes down the discount curve flattens, the purchaser of the future receives money from the exchange = the purchaser of the FRA receives cash collateral from the counterparty; but the purchaser of the FRA will pay less interest on the collateral to the counterparty, while the purchaser of the future will receive less interest on the profits, which reduces the disadvantage to the FRA.
 
 ### Bond Futures
 
@@ -361,7 +361,7 @@ f(t,T) &=-\frac{1}{P(t,T)} \frac{\partial P(t,T)}{\partial T} \\
 \end{aligned}
 $$
 
-#### Model under $\mathbb{Q}$:
+#### HJM Model under $\mathbb{Q}$:
 
 [Relationships between interest rate dynamics](Interest%20Rate%20Dynamics.pdf)
 
@@ -412,3 +412,5 @@ d \ln{P(t,T)} &= \left(r(t) - \frac{1}{2} \Sigma_{t,T}^2 \right) dt - \Sigma_{t,
 \frac{dP(t,T)}{P(t,T)} &= r(t) dt - \Sigma_{t,T} dW_t.
 \end{aligned}
 $$
+
+Special case: Ho-Lee Model and Hull-White Models
