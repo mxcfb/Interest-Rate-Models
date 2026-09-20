@@ -243,7 +243,9 @@ $\text{Fut}(t,T) \le 100(1-L(t,S,T))$. Futures pays $\text{Fut}(t,T) - \text{Fut
 
 Futures are similar to FRAs: If $\text{Fut}(t,T) = 100(1-L(t,S,T))$, then both contracts make the exact same payment. If LIBOR rises over the period $[t,S]$, FRA would be the better contract to have entered (better to pay later); if LIBOR drops, futures would be the better (better to receive earlier). However, if LIBOR rises, the purchaser of the future will finance the losses paid to the exchange at a higher rate; if LIBOR drops, the purchaser of the future will reinvest the profits received from the exchange at a lower rate.
 
-Standard Credit Support Annexes (CSAs):
+---
+
+Consider FRAs with Standard Credit Support Annexes (CSAs):
 - Type of collateral: cash.
 - Currency of collateral: locally specific to the product.
 - Thresholds: zero, exchange on any liability.
@@ -251,7 +253,30 @@ Standard Credit Support Annexes (CSAs):
 - Bilateral or unilateral: bilateral.
 - Remuneration: OIS rate.
 
-**Consider FRAs with standard CSAs:**
+For an cash-collateralized FRA, the cash is collateral supporting an outstanding derivative exposure and normally carries a collateral-interest obligation.
+For a futures contract, variation margin is realized daily P&L settlement.
+This difference in cash-flow treatment is what allows futures and forwards/FRAs to have different values under stochastic interest rates, producing the futures-forward convexity adjustment.
+
+#### Cash-collateralized FRA
+
+If the FRA has positive MTM to you, the counterparty may post cash collateral.
+You can invest the collateral cash, but you generally owe collateral interest back to the collateral poster.
+Therefore, receiving cash collateral does not give you a free funding benefit.
+
+#### Non-cash collateral
+
+If the counterparty posts securities, e.g. a government bond, you do not normally pay overnight cash-collateral interest on its market value.
+However, the economic income on the collateral, such as coupons, generally remains with the collateral poster or is passed back through equivalent payments.
+
+#### Futures
+
+Futures variation margin represents daily settlement of P&L, e.g. $N,\Delta L(t,S,T)$.
+
+The cash received from positive variation margin becomes settled cash.
+There is generally no corresponding obligation to pay collateral interest back to the losing counterparty on accumulated futures gains.
+
+---
+
 - If LIBOR rises over the period $[t,S]$, FRA would be the better contract to have entered (the purchaser of the FRA still receives OIS interest on the collateral from the counterparty);
 - If LIBOR drops, futures would be the better (the purchaser of the FRA needs to pay back OIS interest on the collateral to the counterparty).
 
